@@ -42,7 +42,7 @@ const quotes = [
     quote: 'Random Quote #5',
     source: 'Doolaly O.',
     citation: 'www.doolaly.com',
-    date: 1995,
+    year: 1995,
     tags: ['weird', 'til', 'funny']
   }
 ];
@@ -64,20 +64,24 @@ const getRandomQuote = arr => {
  * `printQuote` function
 ***/
 
-function printQuote() {
+const printQuote = () => {
   const randomQuote = getRandomQuote(quotes);
   let HTMLOut = `
     <p class="quote">${randomQuote.quote}</p>
     <p class="source">${randomQuote.source}
   `;
 
-  // Check if randomQuote has 'citation' property
+  // Check if randomQuote has 'citation', 'year', and 'tags' peoperties
   if (Object.keys(randomQuote).includes('citation')) {
     HTMLOut += `<span class="citation">${randomQuote.citation}</span>`;
   }
-  // Check if 'randomQuote' has 'year' property
+
   if (Object.keys(randomQuote).includes('year')) {
     HTMLOut += `<span class="year">${randomQuote.year}</span>`;
+  }
+
+  if (Object.keys(randomQuote).includes('tags')) {
+    // HTMLOut += `<span class="year">${randomQuote.year}</span>`;
   }
 
   HTMLOut += `</p>`;
@@ -85,6 +89,14 @@ function printQuote() {
   document.getElementById('quote-box').innerHTML = HTMLOut; 
 }
 
+setInterval(
+  function () { 
+    document.body.style.backgroundColor = "rgb(242, 255, 94)"
+    printQuote();
+  }, 5000);
+
+
+  
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
