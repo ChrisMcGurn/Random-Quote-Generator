@@ -48,21 +48,30 @@ const quotes = [
 ];
 
 /**
- * Select a random quote object from argument array
+ * Gets a random number
+ *
+ * @param {number} num - A number representing the max value of the random number
+ * @return {number} A random number from 0 to num
+ */
+
+const getRandomNumber = num => Math.floor(Math.random() * num);
+
+/**
+ * Select a random quote object from an array
  *
  * @param {Array<Object>} arr - An array containing quote objects
  * @return {Object} A quote object from arr
  */
 
 const getRandomQuote = arr => {
-  let randomNumber = Math.floor(Math.random() * arr.length);
+  let randomNumber = getRandomNumber(arr.length);
   return arr[randomNumber];
 }
 
-
-/***
- * `printQuote` function
-***/
+/**
+ * print quote function
+ *
+ */
 
 const printQuote = () => {
   const randomQuote = getRandomQuote(quotes);
@@ -89,12 +98,22 @@ const printQuote = () => {
   document.getElementById('quote-box').innerHTML = HTMLOut; 
 }
 
+
+/**
+ * Generate random RGB value
+ *
+ * @return {string} RGB colour profile
+ */
+
+const getRandomRGB = () => `rgb(${getRandomNumber(255)}, ${getRandomNumber(255)}, ${getRandomNumber(255)})`;
+
+// Refresh quote and body background colour every 5 seconds
 setInterval(
   function () { 
-    document.body.style.backgroundColor = "rgb(242, 255, 94)"
+    document.body.style.backgroundColor = getRandomRGB();
     printQuote();
-  }, 5000);
-
+  }, 5000
+);
 
   
 /***
@@ -103,3 +122,4 @@ setInterval(
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
+
