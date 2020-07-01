@@ -115,6 +115,13 @@ h1 {
   font-style: normal;
 }
 
+.tags {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
 @media (min-width: 768px) {
   body {
     padding: 25px;

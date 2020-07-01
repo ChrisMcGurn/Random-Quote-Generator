@@ -1,57 +1,49 @@
 /******************************************
 Treehouse FSJS Techdegree:
-project 1 - A Random Quote Generator
+Project 1 - A Random Quote Generator
 ******************************************/
-
-// quote: The quote
-// source: The person or character who said it
-// citation: A reference to the source of the quote, like the book, movie or song where the quote originates
-// year: A string or number representing the year the quote originated.
-// tags: An array of tags
 
 const quotes = [
   {
-    quote: 'Random Quote #1',
-    source: 'Dude A.',
-    citation: 'A Book, Pg. 103',
-    year: 1991,
-    tags: ['motivation', 'life', 'personal development']
+    quote: 'Do not go where the path may lead, go instead where there is no path and leave a trail.',
+    source: 'Ralph Waldo Emerson',
+    tags: ['motivation', 'life', 'inspiration']
   },
   {
-    quote: 'Random Quote #2',
-    source: 'Dude B.',
-    citation: 'Unknown',
-    year: 1992,
-    tags: ['music', 'arts', 'inspiration']
+    quote: 'Toto, I\'ve got a feeling we\'re not in Kansas anymore.',
+    source: 'Dorothy Gale',
+    citation: 'The Wizard of Oz',
+    year: 1939,
+    tags: ['movies', 'arts']
   },
   {
-    quote: 'Random Quote #3',
-    source: 'Gourley S.',
-    citation: 'HTTP: The definitive Giuide, Pg. 304',
-    year: 1993,
-    tags: ['http', 'internet', 'data transfer']
+    quote: 'The whole problem with the world is that fools and fanatics are always so certain of themselves, and wiser people so full of doubts.',
+    source: 'Bertrand Russell',
+    tags: ['wisdom', 'fools']
   },
   {
-    quote: 'Random Quote #4',
-    source: 'Ryan D.',
-    citation: 'A Book About Life, Pg. 3',
-    year: 1994,
+    quote: 'The greater danger for most of us lies not in setting our aim too high and falling short, but in setting our aim too low, and achieving our mark.',
+    source: 'Michelangelo di Lodovico Buonarroti Simoni',
     tags: ['life', 'motivation', 'inspiration']
   },
   {
-    quote: 'Random Quote #5',
-    source: 'Doolaly O.',
-    citation: 'www.doolaly.com',
-    year: 1995,
-    tags: ['weird', 'til', 'funny']
+    quote: 'Everybody is a genius. But if you judge a fish by its ability to climb a tree, it will live its whole life believing that it is stupid.',
+    source: 'Albert Einstein',
+    tags: ['motivation', 'science']
+  },
+  {
+    quote: 'All that is gold does not glitter, Not all those who wander are lost; The old that is strong does not wither, Deep roots are not reached by the frost. From the ashes a fire shall be woken, A light from the shadows shall spring; Renewed shall be blade that was broken, The crownless again shall be king.',
+    source: 'J.R.R Tolkien',
+    citation: 'The Followship of the Ring',
+    tags: ['books', 'tolkien']
   }
 ];
 
 /**
- * Gets a random number
+ * Get a random number
  *
  * @param {number} num - A number representing the max value of the random number
- * @return {number} A random number from 0 to num
+ * @returns {number} A random number from 0 to num
  */
 
 const getRandomNumber = num => Math.floor(Math.random() * num);
@@ -60,7 +52,7 @@ const getRandomNumber = num => Math.floor(Math.random() * num);
  * Select a random quote object from an array
  *
  * @param {Array<Object>} arr - An array containing quote objects
- * @return {Object} A quote object from arr
+ * @returns {Object} A quote object from arr
  */
 
 const getRandomQuote = arr => {
@@ -69,7 +61,7 @@ const getRandomQuote = arr => {
 }
 
 /**
- * print quote function
+ * Print out a random quote to the browser
  *
  */
 
@@ -89,11 +81,9 @@ const printQuote = () => {
     HTMLOut += `<span class="year">${randomQuote.year}</span>`;
   }
 
-  if (Object.keys(randomQuote).includes('tags')) {
-    // HTMLOut += `<span class="year">${randomQuote.year}</span>`;
-  }
-
-  HTMLOut += `</p>`;
+  HTMLOut += `
+    <span class="tags">${randomQuote.tags.join(', ')}</span></p>
+  `;
 
   document.getElementById('quote-box').innerHTML = HTMLOut; 
 }
@@ -102,17 +92,17 @@ const printQuote = () => {
 /**
  * Generate random RGB value
  *
- * @return {string} RGB colour profile
+ * @return {string} RGB colour
  */
 
 const getRandomRGB = () => `rgb(${getRandomNumber(255)}, ${getRandomNumber(255)}, ${getRandomNumber(255)})`;
 
-// Refresh quote and body background colour every 5 seconds
+// Refresh quote and body background colour every 10 seconds
 setInterval(
   function () { 
     document.body.style.backgroundColor = getRandomRGB();
     printQuote();
-  }, 5000
+  }, 10000
 );
 
   
