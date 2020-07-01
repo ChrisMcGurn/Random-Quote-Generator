@@ -62,7 +62,6 @@ const getRandomQuote = arr => {
 
 /**
  * Print out a random quote to the browser
- *
  */
 
 const printQuote = () => {
