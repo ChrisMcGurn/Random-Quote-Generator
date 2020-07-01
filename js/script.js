@@ -72,7 +72,7 @@ const printQuote = () => {
     <p class="source">${randomQuote.source}
   `;
 
-  // Check if randomQuote has 'citation', 'year', and 'tags' peoperties
+  // Check if randomQuote has 'citation' and 'year' properties
   if (Object.keys(randomQuote).includes('citation')) {
     HTMLOut += `<span class="citation">${randomQuote.citation}</span>`;
   }
