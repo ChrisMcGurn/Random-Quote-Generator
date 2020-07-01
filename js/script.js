@@ -97,10 +97,19 @@ const printQuote = () => {
 
 const getRandomRGB = () => `rgb(${getRandomNumber(255)}, ${getRandomNumber(255)}, ${getRandomNumber(255)})`;
 
+
+/**
+ * Change the background colour of the html body element
+ */
+
+const changeBgColour = () => {
+  document.body.style.backgroundColor = getRandomRGB();
+}
+
 // Refresh quote and body background colour every 10 seconds
 setInterval(
   function () { 
-    document.body.style.backgroundColor = getRandomRGB();
+    changeBgColour();
     printQuote();
   }, 10000
 );
@@ -111,5 +120,7 @@ setInterval(
  * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
-
+document.getElementById('load-quote').addEventListener("click", function() {
+  changeBgColour();
+  printQuote();
+}, false);
